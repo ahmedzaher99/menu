@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ahmed Zaher Restaurant</title>
+<meta charset="UTF-8">
+<style>
+body{
+    background-color:#0f0f0f;
+    color:white;
+    font-family:Arial;
+    margin:0;
+    padding:0;
+}
+
+header{
+    text-align:center;
+    padding:20px;
+    background:#1a1a1a;
+}
+
+h1{
+    color:#d4af37;
+}
+
+.section{
+    padding:30px;
+}
+
+.items{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:#1a1a1a;
+    border:2px solid #d4af37;
+    border-radius:10px;
+    width:220px;
+    padding:15px;
+    margin:15px;
+    text-align:center;
+}
+
+.card img{
+    width:200px;
+    height:150px;
+    border-radius:10px;
+}
+
+table{
+    width:90%;
+    margin:30px auto;
+    border-collapse:collapse;
+}
+
+th, td{
+    border:1px solid #d4af37;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#d4af37;
+    color:black;
+}
+
+a.button{
+    display:block;
+    width:200px;
+    margin:30px auto;
+    text-align:center;
+    padding:10px;
+    background:#d4af37;
+    color:black;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+a.button:hover{
+    background:#f1c40f;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Ahmed Zaher Restaurant</h1>
+<p>Luxury Black & Gold Dining Experience</p>
+</header>
+
+<div class="section">
+<h2 style="color:#d4af37;">🔥 Premium Burgers</h2>
+<div class="items">
+<div class="card"><img src="image/img1.jpg"><h3>Royal Ahmed Zaher Burger</h3><p>$8</p></div>
+<div class="card"><img src="image/img2.jpg"><h3>Sarabi Crown</h3><p>$7</p></div>
+<div class="card"><img src="image/img3.jpg"><h3>BBQ King</h3><p>$9</p></div>
+<div class="card"><img src="image/img4.jpg"><h3>Double Flame</h3><p>$10</p></div>
+</div>
+</div>
+
+<div class="section">
+<h2 style="color:#d4af37;">🍕 Golden Specials</h2>
+<div class="items">
+<div class="card"><img src="image/img5.jpg"><h3>Golden Pizza</h3><p>$11</p></div>
+<div class="card"><img src="image/img6.jpg"><h3>Flame Pasta</h3><p>$8</p></div>
+<div class="card"><img src="image/img7.jpg"><h3>Luxury Steak</h3><p>$15</p></div>
+<div class="card"><img src="image/img8.jpg"><h3>Grilled Chicken</h3><p>$12</p></div>
+</div>
+</div>
+
+<div class="section">
+<h2 style="color:#d4af37;">🍰 Sweet Touch</h2>
+<div class="items">
+<div class="card"><img src="image/img9.jpg"><h3>Golden Cake</h3><p>$6</p></div>
+<div class="card"><img src="image/img10.jpg"><h3>Chocolate Lava</h3><p>$7</p></div>
+<div class="card"><img src="image/img11.jpg"><h3>Ice Cream Deluxe</h3><p>$5</p></div>
+<div class="card"><img src="image/img12.jpg"><h3>Luxury Donut</h3><p>$4</p></div>
+</div>
+</div>
+
+<h2 style="text-align:center;color:#d4af37;">Menu Table</h2>
+<table>
+<tr>
+<th>Food Name</th>
+<th>Description</th>
+<th>Price</th>
+</tr>
+<tr><td>Royal Ahmed Zaher Burger</td><td>Beef with special sauce</td><td>$8</td></tr>
+<tr><td>Sarabi Crown</td><td>Cheddar cheese burger</td><td>$7</td></tr>
+<tr><td>BBQ King</td><td>BBQ grilled beef</td><td>$9</td></tr>
+<tr><td>Double Flame</td><td>Double beef layers</td><td>$10</td></tr>
+<tr><td>Golden Pizza</td><td>Italian style pizza</td><td>$11</td></tr>
+<tr><td>Flame Pasta</td><td>Creamy white sauce</td><td>$8</td></tr>
+<tr><td>Luxury Steak</td><td>Premium grilled steak</td><td>$15</td></tr>
+<tr><td>Grilled Chicken</td><td>Spicy grilled chicken</td><td>$12</td></tr>
+<tr><td>Golden Cake</td><td>Vanilla layered cake</td><td>$6</td></tr>
+<tr><td>Chocolate Lava</td><td>Hot chocolate cake</td><td>$7</td></tr>
+<tr><td>Ice Cream Deluxe</td><td>Mixed flavors</td><td>$5</td></tr>
+<tr><td>Luxury Donut</td><td>Caramel topping</td><td>$4</td></tr>
+</table>
+
+<a href="order.html" class="button">Place Your Order</a>
+
+<style>
+#langToggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    z-index:1000;
+}
+</style>
+
+<button id="langToggle">AR</button>
+
+<script>
+
+const translations = {
+"Ahmed Zaher Restaurant" : "مطعم احمد زاهر",
+"Golden Flame Restaurant":"مطعم الشعلة الذهبية",
+"Luxury Black & Gold Dining Experience":"تجربة طعام فاخرة باللونين الأسود والذهبي",
+
+"Premium Burgers":"برغر فاخر",
+"Golden Specials":"الأطباق الذهبية",
+"Sweet Touch":"الحلويات",
+
+"Menu Table":"قائمة الطعام",
+"Place Your Order":"اطلب الآن",
+"Back to Menu":"العودة للقائمة",
+"Submit Order":"إرسال الطلب",
+"Thank You for Your Order!":"شكراً لطلبك!",
+"Your luxury meal will be ready very soon 🔥":"سيكون طلبك جاهزاً قريباً 🔥",
+
+"Food Name":"اسم الطبق",
+"Description":"الوصف",
+"Price":"السعر",
+
+"Your Name":"اسمك",
+"Your Email":"بريدك الإلكتروني",
+"Quantity":"الكمية",
+"Select Food":"اختر الطبق",
+
+"Royal Ahmed Zaher Burger":"برغر احمد زاهر الملكي",
+"Sarabi Crown":"تاج سرابي",
+"BBQ King":"ملك الباربكيو",
+"Double Flame":"دبل فليم",
+"Golden Pizza":"بيتزا ذهبية",
+"Flame Pasta":"باستا فليم",
+"Luxury Steak":"ستيك فاخر",
+"Grilled Chicken":"دجاج مشوي",
+"Golden Cake":"كيك ذهبي",
+"Chocolate Lava":"لافا شوكولاتة",
+"Ice Cream Deluxe":"آيس كريم ديلوكس",
+"Luxury Donut":"دونات فاخرة",
+
+"Beef with special sauce":"لحم بقري مع صوص خاص",
+"Cheddar cheese burger":"برغر بجبنة شيدر",
+"BBQ grilled beef":"لحم مشوي بصوص باربكيو",
+"Double beef layers":"طبقتان من اللحم",
+"Italian style pizza":"بيتزا على الطريقة الإيطالية",
+"Creamy white sauce":"صوص أبيض كريمي",
+"Premium grilled steak":"ستيك مشوي فاخر",
+"Spicy grilled chicken":"دجاج مشوي حار",
+"Vanilla layered cake":"كيك فانيلا بطبقات",
+"Hot chocolate cake":"كيك شوكولاتة ساخن",
+"Mixed flavors":"نكهات متعددة",
+"Caramel topping":"تغطية كراميل"
+};
+
+let isArabic = false;
+
+function translatePage(toArabic){
+
+    const elements = document.querySelectorAll("h1,h2,h3,p,a,button,option,th,td");
+
+    elements.forEach(el=>{
+        let originalText = el.textContent;
+
+        if(toArabic){
+
+            for(let key in translations){
+                if(originalText.includes(key)){
+                    el.setAttribute("data-original", originalText);
+                    el.textContent = originalText.replace(key, translations[key]);
+                }
+            }
+
+        } else {
+
+            if(el.hasAttribute("data-original")){
+                el.textContent = el.getAttribute("data-original");
+            }
+
+        }
+    });
+
+    document.querySelectorAll("input,select").forEach(el=>{
+        let ph = el.placeholder;
+        if(ph){
+            if(toArabic){
+                for(let key in translations){
+                    if(ph.includes(key)){
+                        el.setAttribute("data-original-placeholder", ph);
+                        el.placeholder = ph.replace(key, translations[key]);
+                    }
+                }
+            }else{
+                if(el.hasAttribute("data-original-placeholder")){
+                    el.placeholder = el.getAttribute("data-original-placeholder");
+                }
+            }
+        }
+    });
+
+    document.body.dir = toArabic ? "rtl" : "ltr";
+    document.documentElement.lang = toArabic ? "ar" : "en";
+}
+
+document.getElementById("langToggle").addEventListener("click",function(){
+
+    isArabic = !isArabic;
+    translatePage(isArabic);
+    this.textContent = isArabic ? "EN" : "AR";
+
+});
+
+</script>
+
+</body>
+</html>

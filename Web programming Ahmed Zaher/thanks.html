@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thank You</title>
+<meta charset="UTF-8">
+<style>
+body{
+    background:#0f0f0f;
+    color:white;
+    text-align:center;
+    font-family:Arial;
+}
+
+h1{
+    color:#d4af37;
+}
+
+img{
+    width:300px;
+    border-radius:15px;
+    margin:20px;
+}
+
+a{
+    color:#d4af37;
+    display:block;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Thank You for Your Order!</h1>
+<p>Your luxury meal will be ready very soon 🔥</p>
+
+<img src="image/chef.jpg"> <h3>Chef Image</h3>
+
+<a href="menu.html">Back to Menu</a>
+
+<style>
+#langToggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    z-index:1000;
+}
+</style>
+
+<button id="langToggle">AR</button>
+
+<script>
+
+const translations = {
+
+"Thank You for Your Order!":"شكراً لطلبك!",
+"Your luxury meal will be ready very soon 🔥":"سيكون طلبك الفاخر جاهزاً قريباً 🔥",
+"Chef Image" : "صورة الشيف",
+"Back to Menu":"العودة إلى القائمة",
+
+};
+
+let isArabic = false;
+
+function translatePage(toArabic){
+
+    const elements = document.querySelectorAll("h1,p,a");
+
+    elements.forEach(el=>{
+        let originalText = el.textContent;
+
+        if(toArabic){
+
+            for(let key in translations){
+                if(originalText.includes(key)){
+                    el.setAttribute("data-original", originalText);
+                    el.textContent = originalText.replace(key, translations[key]);
+                }
+            }
+
+        } else {
+
+            if(el.hasAttribute("data-original")){
+                el.textContent = el.getAttribute("data-original");
+            }
+
+        }
+    });
+
+    document.body.dir = toArabic ? "rtl" : "ltr";
+    document.documentElement.lang = toArabic ? "ar" : "en";
+}
+
+document.getElementById("langToggle").addEventListener("click",function(){
+
+    isArabic = !isArabic;
+    translatePage(isArabic);
+    this.textContent = isArabic ? "EN" : "AR";
+
+});
+
+</script>
+
+</body>
+</html>

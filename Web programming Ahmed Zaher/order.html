@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Place Your Order</title>
+<meta charset="UTF-8">
+<style>
+body{
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+}
+
+h1{
+    color:#d4af37;
+}
+
+form{
+    background:#1a1a1a;
+    padding:30px;
+    width:40%;
+    margin:auto;
+    border:2px solid #d4af37;
+    border-radius:10px;
+}
+
+input, select, textarea{
+    width:90%;
+    padding:10px;
+    margin:10px;
+    background:#2a2a2a;
+    color:white;
+    border:1px solid #d4af37;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+textarea{
+    resize:vertical;
+    min-height:80px;
+}
+
+button{
+    background:#d4af37;
+    color:black;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#c4a030;
+}
+
+a{
+    color:#d4af37;
+    display:block;
+    margin-top:20px;
+}
+
+.order-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:10px;
+    justify-content:center;
+}
+
+.order-row select{
+    width:60%;
+    margin:0;
+}
+
+.order-row input{
+    width:25%;
+    margin:0;
+}
+
+.order-row .remove-btn{
+    background:#8b0000;
+    color:white;
+    border:none;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    font-size:18px;
+    cursor:pointer;
+    padding:0;
+    flex-shrink:0;
+}
+
+.order-row .remove-btn:hover{
+    background:#cc0000;
+}
+
+#add-item-btn{
+    background:transparent;
+    color:#d4af37;
+    border:2px dashed #d4af37;
+    border-radius:5px;
+    padding:8px 20px;
+    margin:10px;
+    cursor:pointer;
+    font-size:14px;
+    width:90%;
+}
+
+#add-item-btn:hover{
+    background:#1f1f1f;
+}
+
+.section-label{
+    color:#d4af37;
+    font-size:13px;
+    text-align:left;
+    margin: 0 10px 0 25px;
+    opacity:0.8;
+}
+
+.divider{
+    border:none;
+    border-top:1px solid #333;
+    margin:15px 20px;
+}
+
+#total-box{
+    background:#111;
+    border:2px solid #d4af37;
+    border-radius:8px;
+    margin:15px 5%;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:16px;
+}
+
+#total-box span{
+    color:#d4af37;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#langToggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    z-index:1000;
+}
+</style>
+</head>
+
+<body>
+
+<h1 data-key="Place Your Order">Place Your Order</h1>
+
+<form action="thanks.html">
+
+    <p class="section-label" data-key="Personal Info">Personal Info</p>
+    <input type="text" data-placeholder-key="Your Name" placeholder="Your Name" required>
+    <input type="tel" data-placeholder-key="Phone Number" placeholder="Phone Number" required>
+
+    <hr class="divider">
+
+    <p class="section-label" data-key="Your Order">Your Order</p>
+
+    <div id="order-items">
+    </div>
+
+    <button type="button" id="add-item-btn" data-key="+ Add Another Dish">+ Add Another Dish</button>
+
+    <div id="total-box">
+        <span data-key="Total">Total</span>
+        <span id="total-price">$0.00</span>
+    </div>
+
+    <hr class="divider">
+
+    <p class="section-label" data-key="Notes (optional)">Notes (optional)</p>
+    <textarea data-placeholder-key="Any special requests or notes..." placeholder="Any special requests or notes..."></textarea>
+
+    <button type="submit" data-key="Submit Order">Submit Order</button>
+
+</form>
+
+<a href="menu.html" data-key="Back to Menu">Back to Menu</a>
+
+<button id="langToggle">AR</button>
+
+<script>
+
+const translations = {
+    "Place Your Order": "اطلب الآن",
+    "Back to Menu": "العودة إلى القائمة",
+    "Submit Order": "إرسال الطلب",
+    "Your Name": "اسمك",
+    "Phone Number": "رقم الهاتف",
+    "Qty": "الكمية",
+    "Select Food": "اختر الطبق",
+    "Personal Info": "المعلومات الشخصية",
+    "Your Order": "طلبك",
+    "Notes (optional)": "ملاحظات (اختياري)",
+    "Any special requests or notes...": "أي طلبات خاصة أو ملاحظات...",
+    "+ Add Another Dish": "+ أضف طبقاً آخر",
+    "Total": "المجموع",
+    "Royal Ahmed Zaher Burger": "برغر احمد زاهر ملكي",
+    "Sarabi Crown":     "تاج سرابي",
+    "BBQ King":         "ملك الباربكيو",
+    "Double Flame":     "دبل فليم",
+    "Golden Pizza":     "بيتزا ذهبية",
+    "Flame Pasta":      "باستا فليم",
+    "Luxury Steak":     "ستيك فاخر",
+    "Grilled Chicken":  "دجاج مشوي",
+    "Golden Cake":      "كيك ذهبي",
+    "Chocolate Lava":   "لافا شوكولاتة",
+    "Ice Cream Deluxe": "آيس كريم ديلوكس",
+    "Luxury Donut":     "دونات فاخرة"
+};
+
+let isArabic = false;
+
+const foodOptions = [
+    { key:"Royal Ahmed Zaher Burger",    price:8  },
+    { key:"Sarabi Crown",    price:7  },
+    { key:"BBQ King",        price:9  },
+    { key:"Double Flame",    price:10 },
+    { key:"Golden Pizza",    price:11 },
+    { key:"Flame Pasta",     price:8  },
+    { key:"Luxury Steak",    price:15 },
+    { key:"Grilled Chicken", price:12 },
+    { key:"Golden Cake",     price:6  },
+    { key:"Chocolate Lava",  price:7  },
+    { key:"Ice Cream Deluxe",price:5  },
+    { key:"Luxury Donut",    price:4  }
+];
+
+function updateTotal(){
+    let total = 0;
+    document.querySelectorAll(".order-row").forEach(row => {
+        const price  = parseFloat(row.querySelector("select").value) || 0;
+        const amount = parseInt(row.querySelector("input[type='number']").value) || 0;
+        total += price * amount;
+    });
+    document.getElementById("total-price").textContent = "$" + total.toFixed(2);
+}
+function buildSelectHTML(){
+    let html = `<option value="" data-key="Select Food">${isArabic ? translations["Select Food"] : "Select Food"}</option>`;
+    foodOptions.forEach(f => {
+        html += `<option value="${f.price}" data-key="${f.key}">${isArabic ? translations[f.key] : f.key}</option>`;
+    });
+    return html;
+}
+
+function createOrderRow(isFirst = false){
+    const row = document.createElement("div");
+    row.className = "order-row";
+
+    const sel = document.createElement("select");
+    sel.required = true;
+    sel.setAttribute("data-key-select","true");
+    sel.innerHTML = buildSelectHTML();
+    sel.addEventListener("change", updateTotal);   
+
+    const qty = document.createElement("input");
+    qty.type = "number";
+    qty.min  = "1";
+    qty.value = "1";
+    qty.required = true;
+    qty.setAttribute("data-placeholder-key","Qty");
+    qty.placeholder = isArabic ? translations["Qty"] : "Qty";
+    qty.addEventListener("input", updateTotal);    
+
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-btn";
+    removeBtn.textContent = "×";
+    removeBtn.title = "Remove";
+    removeBtn.addEventListener("click", function(){
+        if(document.querySelectorAll(".order-row").length > 1){
+            row.remove();
+            updateTotal();
+        }
+    });
+
+    row.appendChild(sel);
+    row.appendChild(qty);
+    row.appendChild(removeBtn);
+    return row;
+}
+
+document.getElementById("add-item-btn").addEventListener("click", function(){
+    const rows      = document.querySelectorAll(".order-row");
+    const lastRow   = rows[rows.length - 1];
+    const lastSelect = lastRow.querySelector("select");
+
+    if(!lastSelect.value){
+        lastSelect.style.borderColor = "#ff4444";
+        setTimeout(()=>{ lastSelect.style.borderColor = "#d4af37"; }, 1500);
+        return;
+    }
+
+    document.getElementById("order-items").appendChild(createOrderRow());
+    updateTotal();
+});
+
+document.getElementById("order-items").appendChild(createOrderRow(true));
+updateTotal();
+
+function applyTranslations(toArabic){
+    document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if(key && translations[key]){
+            el.textContent = toArabic ? translations[key] : key;
+        }
+    });
+
+    document.querySelectorAll("[data-placeholder-key]").forEach(el => {
+        const key = el.getAttribute("data-placeholder-key");
+        if(key && translations[key]){
+            el.placeholder = toArabic ? translations[key] : key;
+        }
+    });
+
+    document.querySelectorAll("select[data-key-select]").forEach(sel => {
+        const currentVal = sel.value;
+        sel.querySelectorAll("option[data-key]").forEach(opt => {
+            const key = opt.getAttribute("data-key");
+            if(key && translations[key]){
+                opt.textContent = toArabic ? translations[key] : key;
+            }
+        });
+        sel.value = currentVal;
+    });
+
+    document.body.dir = toArabic ? "rtl" : "ltr";
+    document.documentElement.lang = toArabic ? "ar" : "en";
+
+    document.querySelectorAll(".section-label").forEach(el => {
+        el.style.textAlign = toArabic ? "right" : "left";
+        el.style.margin    = toArabic ? "0 25px 0 10px" : "0 10px 0 25px";
+    });
+}
+
+document.getElementById("langToggle").addEventListener("click", function(){
+    isArabic = !isArabic;
+    applyTranslations(isArabic);
+    this.textContent = isArabic ? "EN" : "AR";
+});
+
+</script>
+
+</body>
+</html>
